@@ -248,7 +248,7 @@
                   "method":"POST",
                   "contentType":"application/json",                  
                   "programDescription": "program with All fields",
-                  "programName": "PostmanApiExplorerXyz",
+                  "programName": "PostmanApiExpArraylist",
                   "programStatus": "Active",
                   "authType": "Bearer Token",
                   "Endpoint": "saveprogram",
