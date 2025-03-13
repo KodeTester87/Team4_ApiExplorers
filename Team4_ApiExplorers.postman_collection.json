@@ -595,7 +595,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"programDescription\": \"{{programDescription}}\",\r\n\"programName\": \"{{programName}}\",\r\n\"programStatus\": \"{{programStatus}}\"\r\n}",
+							"raw": "{\r\n\"programDescription\": \"{{programDescription}}\",\r\n\"programName\": \"{{programName1}}\",\r\n\"programStatus\": \"{{programStatus}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1081,7 +1081,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"batchDescription\": \"{{batchDescription}}\",\r\n    \"batchName\": \"{{BatchName2}}\",\r\n    \"batchNoOfClasses\": {{batchNoOfClasses}},\r\n    \"batchStatus\": \"{{batchStatus}}\",\r\n    \"programId\": {{programId1}},\r\n    \"programName\": \"{{programName}}\"\r\n}\r\n\r\n",
+							"raw": "{\r\n    \"batchDescription\": \"{{batchDescription}}\",\r\n    \"batchName\": \"{{BatchName2}}\",\r\n    \"batchNoOfClasses\": {{batchNoOfClasses}},\r\n    \"batchStatus\": \"{{batchStatus}}\",\r\n    \"programId\": {{programId1}},\r\n    \"programName\": \"{{programName1}}\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2417,50 +2417,510 @@
 			"name": "User Module",
 			"item": [
 				{
-					"name": "Create New User",
-					"request": {
-						"method": "POST",
-						"header": []
-					},
-					"response": []
-				},
-				{
 					"name": "Get All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var actualcode = pm.response.code;",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type should be application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"status line\", function(){",
+									"    pm.expect(pm.response.status).to.include(\"OK\");",
+									"});",
+									"",
+									"const schema = {",
+									"  ",
+									"  \"items\": [",
+									"    {",
+									"      \"type\": \"object\",",
+									"      \"properties\": {",
+									"        \"userComments\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userEduPg\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userEduUg\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userFirstName\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userId\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userLastName\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userLinkedinUrl\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userLocation\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userMiddleName\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userPhoneNumber\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userTimeZone\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userVisaStatus\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"userLoginEmail\": {",
+									"          \"type\": \"string\"",
+									"        }",
+									"      },",
+									"      \"required\": [",
+									"        \"userComments\",",
+									"        \"userEduPg\",",
+									"        \"userEduUg\",",
+									"        \"userFirstName\",",
+									"        \"userId\",",
+									"        \"userLastName\",",
+									"        \"userLinkedinUrl\",",
+									"        \"userLocation\",",
+									"        \"userMiddleName\",",
+									"        \"userPhoneNumber\",",
+									"        \"userTimeZone\",",
+									"        \"userVisaStatus\",",
+									"        \"userLoginEmail\"",
+									"      ]",
+									"    }",
+									"  ]",
+									"}",
+									"",
+									"pm.test('Validate schema',()=>{",
+									"    pm.response.to.have.jsonSchema(schema);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Active Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var actualcode = pm.response.code;\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type should be application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status line\", function(){\r",
+									"    pm.expect(pm.response.status).to.include(\"OK\");\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  \r",
+									"  \"items\": [\r",
+									"    {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"userComments\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userEduPg\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userEduUg\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userFirstName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userId\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLastName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLinkedinUrl\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLocation\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userMiddleName\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userPhoneNumber\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userTimeZone\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userVisaStatus\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"userLoginEmail\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"userComments\",\r",
+									"        \"userEduPg\",\r",
+									"        \"userEduUg\",\r",
+									"        \"userFirstName\",\r",
+									"        \"userId\",\r",
+									"        \"userLastName\",\r",
+									"        \"userLinkedinUrl\",\r",
+									"        \"userLocation\",\r",
+									"        \"userMiddleName\",\r",
+									"        \"userPhoneNumber\",\r",
+									"        \"userTimeZone\",\r",
+									"        \"userVisaStatus\",\r",
+									"        \"userLoginEmail\"\r",
+									"      ]\r",
+									"    }\r",
+									"  ]\r",
+									"}\r",
+									"  \r",
+									"\r",
+									"\r",
+									"pm.test('Validate schema',()=>{\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get User Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Akansh@gmail.com\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get All Roles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var actualcode = pm.response.code;\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type should be application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status line\", function(){\r",
+									"    pm.expect(pm.response.status).to.include(\"OK\");\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"  \"items\": {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"      \"creationTime\": {\r",
+									"        \"type\": \"string\",\r",
+									"        \"format\": \"date-time\"\r",
+									"      },\r",
+									"      \"lastModTime\": {\r",
+									"        \"type\": \"string\",\r",
+									"        \"format\": \"date-time\"\r",
+									"      },\r",
+									"      \"roleDesc\": {\r",
+									"        \"type\": \"string\"\r",
+									"      },\r",
+									"      \"roleId\": {\r",
+									"        \"type\": \"string\"\r",
+									"      },\r",
+									"      \"roleName\": {\r",
+									"        \"type\": \"string\"\r",
+									"      }\r",
+									"    },\r",
+									"    \"required\": [\"creationTime\", \"lastModTime\", \"roleDesc\", \"roleId\", \"roleName\"]\r",
+									"  }\r",
+									"}\r",
+									"\r",
+									"\r",
+									"  \r",
+									"\r",
+									"\r",
+									"pm.test('Validate schema',()=>{\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get All Users With Roles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var actualcode = pm.response.code;\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type should be application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"status line\", function(){\r",
+									"    pm.expect(pm.response.status).to.include(\"OK\");\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"    \"items\": [\r",
+									"        {\r",
+									"            \"items\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"properties\": {\r",
+									"                    \"userRoleId\": {\r",
+									"                        \"type\": \"integer\"\r",
+									"                    },\r",
+									"                    \"user\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"properties\": {\r",
+									"                            \"userId\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userFirstName\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userLastName\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userMiddleName\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userPhoneNumber\": {\r",
+									"                                \"type\": \"integer\"\r",
+									"                            },\r",
+									"                            \"userLocation\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userTimeZone\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userLinkedinUrl\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userEduUg\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"used g\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userComments\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"userVisaStatus\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"hibernateLazyInitializer\": {\r",
+									"                                \"type\": \"object\"\r",
+									"                            }\r",
+									"                        },\r",
+									"                        \"required\": [\r",
+									"                            \"userId\",\r",
+									"                            \"userFirstName\",\r",
+									"                            \"userLastName\",\r",
+									"                            \"userPhoneNumber\",\r",
+									"                            \"userLocation\",\r",
+									"                            \"userTimeZone\",\r",
+									"                            \"userLinkedinUrl\",\r",
+									"                            \"userEduUg\",\r",
+									"                            \"used g\",\r",
+									"                            \"userComments\",\r",
+									"                            \"userVisaStatus\"\r",
+									"                        ]\r",
+									"                    },\r",
+									"                    \"role\": {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"properties\": {\r",
+									"                            \"roleId\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"roleName\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"roleDesc\": {\r",
+									"                                \"type\": \"string\"\r",
+									"                            },\r",
+									"                            \"creationTime\": {\r",
+									"                                \"type\": \"string\",\r",
+									"                                \"format\": \"date-time\"\r",
+									"                            },\r",
+									"                            \"lastModTime\": {\r",
+									"                                \"type\": \"string\",\r",
+									"                                \"format\": \"date-time\"\r",
+									"                            },\r",
+									"                            \"hibernateLazyInitializer\": {\r",
+									"                                \"type\": \"object\"\r",
+									"                            }\r",
+									"                        },\r",
+									"                        \"required\": [\r",
+									"                            \"roleId\",\r",
+									"                            \"roleName\",\r",
+									"                            \"roleDesc\",\r",
+									"                            \"creationTime\",\r",
+									"                            \"lastModTime\"\r",
+									"                        ]\r",
+									"                    },\r",
+									"                    \"batches\": {\r",
+									"                        \"type\": \"array\",\r",
+									"                        \"items\": {}\r",
+									"                    },\r",
+									"                    \"userRoleStatus\": {\r",
+									"                        \"type\": \"string\"\r",
+									"                    }\r",
+									"                },\r",
+									"                \"required\": [\r",
+									"                    \"userRoleId\",\r",
+									"                    \"user\",\r",
+									"                    \"role\",\r",
+									"                    \"userRoleStatus\"\r",
+									"                ]\r",
+									"            }\r",
+									"        }\r",
+									"    ]\r",
+									"};\r",
+									"\r",
+									"pm.test('Validate schema', function(){\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -2468,39 +2928,397 @@
 					"name": "Get Count of Active And Inactive Users",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get User By Program Batches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Retrieve User For Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Users By RoleId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var actualcode = pm.response.code;",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type should be application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"status line\", function(){",
+									"    pm.expect(pm.response.status).to.include(\"OK\");",
+									"});",
+									"const schema =",
+									"{",
+									"  \"items\": {",
+									"    \"type\": \"object\",",
+									"    \"properties\": {",
+									"      \"userRoleId\": {",
+									"        \"type\": \"integer\"",
+									"      },",
+									"      \"user\": {",
+									"        \"type\": \"object\",",
+									"        \"properties\": {",
+									"          \"userId\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userFirstName\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userLastName\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userMiddleName\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userPhoneNumber\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userLocation\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userTimeZone\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userLinkedinUrl\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userEduUg\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"used g\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userComments\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"userVisaStatus\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"hibernateLazyInitializer\": {",
+									"            \"type\": \"object\"",
+									"          }",
+									"        },",
+									"        \"required\": [",
+									"          \"userId\",",
+									"          \"userFirstName\",",
+									"          \"userLastName\",",
+									"          \"userPhoneNumber\",",
+									"          \"userLocation\",",
+									"          \"userTimeZone\",",
+									"          \"userLinkedinUrl\",",
+									"          \"userEduUg\",",
+									"          \"used g\",",
+									"          \"userVisaStatus\"",
+									"        ]",
+									"      },",
+									"      \"role\": {",
+									"        \"type\": \"object\",",
+									"        \"properties\": {",
+									"          \"roleId\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"roleName\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"roleDesc\": {",
+									"            \"type\": \"string\"",
+									"          },",
+									"          \"creationTime\": {",
+									"            \"type\": \"string\",",
+									"            \"format\": \"date-time\"",
+									"          },",
+									"          \"lastModTime\": {",
+									"            \"type\": \"string\",",
+									"            \"format\": \"date-time\"",
+									"          },",
+									"          \"hibernateLazyInitializer\": {",
+									"            \"type\": \"object\"",
+									"          }",
+									"        },",
+									"        \"required\": [",
+									"          \"roleId\",",
+									"          \"roleName\",",
+									"          \"roleDesc\",",
+									"          \"creationTime\",",
+									"          \"lastModTime\"",
+									"        ]",
+									"      },",
+									"      \"batches\": {",
+									"        \"type\": \"array\",",
+									"        \"items\": {}",
+									"      },",
+									"      \"userRoleStatus\": {",
+									"        \"type\": \"string\"",
+									"      }",
+									"    },",
+									"    \"required\": [",
+									"      \"userRoleId\",",
+									"      \"user\",",
+									"      \"role\",",
+									"      \"userRoleStatus\"",
+									"    ]",
+									"  }",
+									"}",
+									"",
+									"",
+									"",
+									"pm.test('Validate schema',()=>{",
+									"    pm.response.to.have.jsonSchema(schema);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Gets Users By RoleId V2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var actualcode = pm.response.code;",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type should be application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");",
+									"});",
+									"",
+									"pm.test(\"status line\", function(){",
+									"    pm.expect(pm.response.status).to.include(\"OK\");",
+									"});",
+									"const schema = {",
+									"  \"properties\": {",
+									"    \"facets\": {",
+									"      \"type\": \"object\",",
+									"      \"properties\": {",
+									"        \"facetedFields\": {",
+									"          \"type\": \"array\",",
+									"          \"items\": [",
+									"            {",
+									"              \"type\": \"object\",",
+									"              \"properties\": {",
+									"                \"displayName\": {",
+									"                  \"type\": \"string\"",
+									"                },",
+									"                \"filterValues\": {",
+									"                  \"type\": \"array\",",
+									"                  \"items\": [",
+									"                    {",
+									"                      \"type\": \"object\",",
+									"                      \"properties\": {",
+									"                        \"count\": {",
+									"                          \"type\": \"integer\"",
+									"                        },",
+									"                        \"name\": {",
+									"                          \"type\": \"string\"",
+									"                        }",
+									"                      },",
+									"                      \"required\": [",
+									"                        \"count\",",
+									"                        \"name\"",
+									"                      ]",
+									"                    }",
+									"                  ]",
+									"                }",
+									"              },",
+									"              \"required\": [",
+									"                \"displayName\",",
+									"                \"filterValues\"",
+									"              ]",
+									"            }",
+									"          ]",
+									"        }",
+									"      },",
+									"      \"required\": [",
+									"        \"facetedFields\"",
+									"      ]",
+									"    },",
+									"    \"users\": {",
+									"      \"type\": \"array\",",
+									"      \"items\": [",
+									"        {",
+									"          \"type\": \"object\",",
+									"          \"properties\": {",
+									"            \"userComments\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userEduPg\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userEduUg\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userFirstName\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userId\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userLastName\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userLinkedinUrl\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userLocation\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userLoginEmail\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userMiddleName\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userPhoneNumber\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userTimeZone\": {",
+									"              \"type\": \"string\"",
+									"            },",
+									"            \"userVisaStatus\": {",
+									"              \"type\": \"string\"",
+									"            }",
+									"          },",
+									"          \"required\": [",
+									"            \"userComments\",",
+									"            \"userEduPg\",",
+									"            \"userEduUg\",",
+									"            \"userFirstName\",",
+									"            \"userId\",",
+									"            \"userLastName\",",
+									"            \"userLinkedinUrl\",",
+									"            \"userLocation\",",
+									"            \"userLoginEmail\",",
+									"            \"userMiddleName\",",
+									"            \"userPhoneNumber\",",
+									"            \"userTimeZone\",",
+									"            \"userVisaStatus\"",
+									"          ]",
+									"        }",
+									"      ]",
+									"    }",
+									"  },",
+									"  \"required\": [",
+									"    \"facets\",",
+									"    \"users\"",
+									"  ]",
+									"}",
+									"pm.test('Validate schema',()=>{",
+									"    pm.response.to.have.jsonSchema(schema);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -2988,9 +3806,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{Endpoint}}",
+							"raw": "{{baseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{Endpoint}}"
+								"{{baseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -3125,7 +3943,7 @@
 									"\r",
 									"// // Log the raw response for debugging\r",
 									"// console.log(\"Raw Response:\", pm.response.text());\r",
-									"\r",
+									"var res = pm.response.json();\r",
 									"try {\r",
 									"    var res = pm.response.json();\r",
 									"    console.log(\"Parsed JSON Response:\", res);\r",
@@ -3152,7 +3970,7 @@
 									"    // }\r",
 									"    // if (res.batchId) {\r",
 									"    //     console.log(\":\", res.batchId);\r",
-									"    //     pm.collectionVariables.set(\"batchId\", res.batchId);\r",
+									"    //     pm.collectionVariables.set(\"batchId2\", res.batchId);\r",
 									"    // } else {\r",
 									"    //     console.log(\"batchId not found in response\");\r",
 									"    // }\r",
@@ -3160,6 +3978,7 @@
 									"} catch (error) {\r",
 									"    console.log(\"JSON Parse Error:\", error);\r",
 									"}\r",
+									"\r",
 									"\r",
 									"\r",
 									"\r",
@@ -3290,7 +4109,27 @@
 									"// Set the classScheduledDates as an environment variable\r",
 									"pm.collectionVariables.set(\"classScheduledDates\", JSON.stringify(scheduledDates));\r",
 									"\r",
-									"console.log(\"Generated classScheduledDates:\", scheduledDates);"
+									"console.log(\"Generated classScheduledDates:\", scheduledDates);\r",
+									"\r",
+									"// if (res.batchId) {\r",
+									"//         console.log(\"batchId:\", res.batchId);\r",
+									"//         pm.collectionVariables.set(\"batchId2\", res.batchId);\r",
+									"//     } else {\r",
+									"//         console.log(\"batchId not found in response\");\r",
+									"//     }\r",
+									"\r",
+									"\r",
+									"\r",
+									"// //fetching batchID\r",
+									"// if (!pm.collectionVariables.get(\"batchId\")) {\r",
+									"//     throw new Error(\"batchId2 is not set. Run the POST request first.\");\r",
+									"// }\r",
+									"// console.log(\"Fetching batchId2:\", pm.collectionVariables.get(\"batchId2\"));\r",
+									"//fetching batchID\r",
+									"if (!pm.collectionVariables.get(\"batchId2\")) {\r",
+									"    throw new Error(\"batchId is not set. Run the POST request first.\");\r",
+									"}\r",
+									"console.log(\"Fetching batchId:\", pm.collectionVariables.get(\"batchId2\"));"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -3310,9 +4149,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseUrl}}{{endpoint}}",
+							"raw": "{{baseUrl}}{{endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{endpoint}}"
+								"{{baseUrl}}{{endpoint}}"
 							]
 						}
 					},
@@ -3333,9 +4172,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseUrl}}{{endpoint}}",
+							"raw": "{{baseUrl}}{{endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{endpoint}}"
+								"{{baseUrl}}{{endpoint}}"
 							]
 						}
 					},
@@ -3793,9 +4632,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{Endpoint}}",
+							"raw": "{{baseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{Endpoint}}"
+								"{{baseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -3978,9 +4817,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{Endpoint}}",
+							"raw": "{{baseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{Endpoint}}"
+								"{{baseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -4438,9 +5277,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{Endpoint}}",
+							"raw": "{{baseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{Endpoint}}"
+								"{{baseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -4870,14 +5709,14 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Validate response against test data\", function () {\r",
-									"     var batchId = pm.jsonData.get(\"batchId2\");\r",
+									"     var batchId = pm.jsonData.get(\"batchId\");\r",
 									"});\r",
 									"\r",
 									"//fetching batchID\r",
 									"if (!pm.collectionVariables.get(\"batchId2\")) {\r",
-									"    throw new Error(\"batchId2 is not set. Run the POST request first.\");\r",
+									"    throw new Error(\"batchId is not set. Run the POST request first.\");\r",
 									"}\r",
-									"console.log(\"Fetching batchId2:\", pm.collectionVariables.get(\"batchId2\"));\r",
+									"console.log(\"Fetching batchId:\", pm.collectionVariables.get(\"batchId2\"));\r",
 									""
 								],
 								"type": "text/javascript",
@@ -5009,9 +5848,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{Endpoint}}",
+							"raw": "{{baseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{Endpoint}}"
+								"{{baseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -5194,9 +6033,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{Endpoint}}",
+							"raw": "{{baseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{Endpoint}}"
+								"{{baseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -5459,9 +6298,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseUrl}}{{endpoint}}",
+							"raw": "{{baseUrl}}{{endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{endpoint}}"
+								"{{baseUrl}}{{endpoint}}"
 							]
 						}
 					},
@@ -5640,9 +6479,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseUrl}}{{endpoint}}",
+							"raw": "{{baseUrl}}{{endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{endpoint}}"
+								"{{baseUrl}}{{endpoint}}"
 							]
 						}
 					},
@@ -5798,9 +6637,32 @@
 				},
 				{
 					"name": "Delete User By UserId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{endpoint}}",
+							"host": [
+								"{{baseUrl}}{{endpoint}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -5864,9 +6726,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}{{DeleteClassEP}}",
+							"raw": "{{BaseUrl}}{{Endpoint}}",
 							"host": [
-								"{{BaseUrl}}{{DeleteClassEP}}"
+								"{{BaseUrl}}{{Endpoint}}"
 							]
 						}
 					},
@@ -6165,6 +7027,14 @@
 		},
 		{
 			"key": "classScheduledDates",
+			"value": ""
+		},
+		{
+			"key": "class_Id",
+			"value": ""
+		},
+		{
+			"key": "class_Topic",
 			"value": ""
 		}
 	]
