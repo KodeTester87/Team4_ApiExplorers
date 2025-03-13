@@ -248,7 +248,7 @@
                   "method":"POST",
                   "contentType":"application/json",                  
                   "programDescription": "program with All fields",
-                  "programName": "PostmanApiExplorerXyz",
+                  "programName": "PostmanApiExplorerAbc",
                   "programStatus": "Active",
                   "authType": "Bearer Token",
                   "Endpoint": "saveprogram",
@@ -959,12 +959,12 @@
                 "userComments": "Admin user for LMS",
                 "userEduPg": "MBA",
                 "userEduUg": "B.Tech",
-                "userFirstName": "Astra",
+                "userFirstName": "Alia",
                 "userLastName": "Johnson",
                 "userLinkedinUrl": "https://www.linkedin.com",
                 "userLocation": "New York",
                 "userMiddleName": "A",
-                "userPhoneNumber": "+1 2134567864",
+                "userPhoneNumber": "+1 2134567890",
                 "userRoleMaps": [
                     {
                         "roleId": "R01",
@@ -975,7 +975,7 @@
                 "userVisaStatus": "US-Citizen",
                 "userLogin": {
                     "loginStatus": "Active",
-                    "userLoginEmail": "alia1uerd@gmail.com"
+                    "userLoginEmail": "alia1.admin@gmail.com"
                 },
                 "statusCode": 200,
                 "statusText": "OK"
@@ -1055,80 +1055,14 @@
 
 
 
+
 {
              "name": "Create new Class",
              "data": [
               
-		{
-               "scenario": "Create a class with no auth ",
-                "authType": "No Auth",
-                "method": "POST",
-                "url": "valid",
-                "endpoint": "CreateClassSchedule",
-                "batch_Id": "{{batchId2}}",
-                "class_Num": 1,
-                "class_date": "2025-03-18T19:04:41.220Z",
-               "class_topic": "pythonsort",
-                "class_status": "Active",
-                "class_staffId": "U25",
-                "class_description": "null",
-                "class_comments": "null",
-                "class_notes": "null",
-                "class_recordingPath": "null",
-                "class_scheduledDates": [
-                                "2025-03-20T19:04:41.220Z"
-                        ],
-                "statusCode": 401,
-                "statusText": "Unauthorized"
-		},
-
-		{
-		"scenario": "Create a class with invalid method ",
-                "authType": "Bearer Token",
-                "method": "GET",
-                "url": "valid",
-                "endpoint": "CreateClassSchedule",
-                "batch_Id": "{{batchId2}}",
-                "class_Num": 1,
-                "class_date": "2025-03-18T19:04:41.220Z",
-               "class_topic": "pythonsort",
-                "class_status": "Active",
-                "class_staffId": "U25",
-                "class_description": "null",
-                "class_comments": "null",
-                "class_notes": "null",
-                "class_recordingPath": "null",
-                "class_scheduledDates": [
-                                "2025-03-20T19:04:41.220Z"
-                        ],
-                "statusCode": 405,
-                "statusText": "Method Not Allowed"
-
-		},
-                {
-
-		"scenario": "Create a class with invalid endpoint ",
-                "authType": "Bearer Token",
-                "method": "POST",
-                "url": "valid",
-                "endpoint": "CreateClassSch",
-                "batch_Id": "{{batchId2}}",
-                "class_Num": 1,
-                "class_date": "2025-03-18T19:04:41.220Z",
-               "class_topic": "pythonsort",
-                "class_status": "Active",
-                "class_staffId": "U25",
-                "class_description": "null",
-                "class_comments": "null",
-                "class_notes": "null",
-                "class_recordingPath": "null",
-                "class_scheduledDates": [
-                                "2025-03-20T19:04:41.220Z"
-                        ],
-                "statusCode": 401,
-                "statusText": "Unauthorized"
-
-		},
+		
+		
+                
                {
 
 		"scenario": "creating new class with existing class Topic ",
@@ -1523,16 +1457,7 @@
                   "Endpoint": "allClasses",
                   "statusCode": 200,
                   "statusText": "OK"
-               },
-              
-
-                {
-                  "method":"POST",
-                  "authType": "Bearer Token",
-                  "Endpoint": "allClasses",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
-               }
+               }              
 
 
            
@@ -1610,20 +1535,14 @@
                   "Endpoint": "batchRecordings/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "batchRecordings/{{batchId2}}",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
+              
           ]
      },
 {
 
 
-    "name": "Get Class details by Id",
+    "name": "Get Class details by classId",
             "data": [
        {
                   "method":"GET",
@@ -1652,14 +1571,8 @@
                   "Endpoint": "class/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "class/{{class_Id}}",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
+              
           ]
      },
 {
@@ -1693,18 +1606,12 @@
                   "Endpoint": "classes/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "classes/{{class_Topic}}",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
+              
           ]
      },
 {
-    "name": "Get all Classes by BatchId",
+    "name": "Get All classes by batchid",
             "data": [
        {
                   "method":"GET",
@@ -1733,14 +1640,8 @@
                   "Endpoint": "classesbyBatch/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "classesbyBatch/{{batchId2}}",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
+              
           ]
      },
 {
@@ -1806,15 +1707,9 @@
                   "Endpoint": "classrecordingsSSS",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-        
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "classrecordings",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
+        
+              
           ]
      },
 {
@@ -1847,14 +1742,8 @@
                   "Endpoint": "classRecordings/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "classRecordings/{{class_Id}}",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
+              
           ]
      },
 
@@ -1868,7 +1757,7 @@
                 "authType": "No Auth",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -1892,7 +1781,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateCl",
+                "endpoint": "updateCl",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -1910,36 +1799,14 @@
                 "statusText": "Not Found"
 
 		},
-		{
-               "scenario": "Update a class with invalid method",
-                "authType": "Bearer Token",
-                "method": "POST",
-                "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
-                "batch_Id": "{{batchId2}}",
-                "class_Num": 1,
-                "class_date": "2025-03-18T19:04:41.220Z",
-               "class_topic": "pythonsort",
-                "class_status": "Active",
-                "class_staffId": "U25",
-                "class_description": "null",
-                "class_comments": "null",
-                "class_notes": "null",
-                "class_recordingPath": "null",
-                "class_scheduledDates": [
-                                "2025-03-20T19:04:41.220Z"
-                        ],
-                "statusCode": 405,
-                "statusText": "Method Not Allowed"
-
-		},
+		
 
 		{
                "scenario": "Update a class with invalid classID ",
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/888",
+                "endpoint": "updateClass/888",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -1964,7 +1831,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": "",
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -1988,7 +1855,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 2,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2012,7 +1879,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2036,7 +1903,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2059,7 +1926,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2083,7 +1950,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2107,7 +1974,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2131,7 +1998,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2154,7 +2021,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2177,7 +2044,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2198,7 +2065,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2222,7 +2089,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "updateNewClassEP": "updateClass/{{class_Id}}",
+                "endpoint": "updateClass/{{class_Id}}",
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
@@ -2253,7 +2120,7 @@
                 "authType": "no auth",
                 "method": "PUT",
                 "url": "valid",
-                "UpdateClassByRecEP": "updateClassrecording/{{class_Id}}",
+                "endpoint": "updateClassrecording/{{class_Id}}",
                 "class_recordingPath": "//recording.mp4",
 	            "cs_Id": 0,
                 "statusCode": 200,
@@ -2265,7 +2132,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "UpdateClassByRecEP": "updateClass",
+                "endpoint": "updateClass",
                 "class_recordingPath": "//recording.mp4",
 	            "cs_Id": 0,
                 "statusCode": 200,
@@ -2277,7 +2144,7 @@
                 "authType": "Bearer Token",
                 "method": "post",
                 "url": "valid",
-                "UpdateClassByRecEP": "updateClass",
+                "endpoint": "updateClassrecording/{{class_Id}}",
                 "class_recordingPath": "//recording.mp4",
 	            "cs_Id": 0,
                 "statusCode": 200,
@@ -2289,7 +2156,7 @@
                 "authType": "Bearer Token",
                 "method": "PUT",
                 "url": "valid",
-                "UpdateClassByRecEP": "updateClassrecording/{{class_Id}}",
+                "endpoint": "updateClassrecording/{{class_Id}}",
                 "class_recordingPath": "//recording.mp4",
 	            "cs_Id": 0,
                 "statusCode": 200,
@@ -2328,367 +2195,11 @@
                   "Endpoint": "deleteByClass/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
-               },
-              {
-                  "method":"PUT",
-                  "authType": "Bearer Token",
-                  "Endpoint": "deleteByClass/{{class_Id}}",
-                  "statusCode": 405,
-                  "statusText": "Method Not Allowed"
                }
           ]
-      },
-      {
-         "name": "Delete User By UserId",
-         "data": [
-           {
-             "scenario": "Delete User without authorization",
-             "authType": "Bearer Token",
-             "method": "DELETE",
-             "endpoint": "users/U211",
-             "statusCode": 401,
-             "statusText": "Unauthorized"
-           },
-           {
-             "scenario": "Delete User without authorization",
-             "authType": "No Auth",
-             "method": "DELETE",
-             "endpoint": "users/U211",
-             "statusCode": 401,
-             "statusText": "Unauthorized"
-           },
-           {
-             "scenario": "Delete User by invalid batchid",
-             "authType": "Bearer Token",
-             "method": "DELETE",
-             "endpoint": "users/",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Delete User by invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "DELETE",
-             "endpoint": "users/{{nuserId}}",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get All Users",
-         "data": [
-           {
-             "scenario": "Retrieve all Users with authorization",
- 
-             "endpoint": "users",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
-           {
-             "scenario": "Retrieve all batches with authorization and invalid endpoint",
- 
-             "endpoint": "usersss",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
+      }
 
-       {
-         "name": "Get Active Users",
-         "data": [
-           {
-             "scenario": "Retrieve All Active Users with authorization",
- 
-             "method": "GET",
-             "endpoint": "users/activeUsers",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve All Active Users with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/activeUserssss",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve All Active Users with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/activeUsers**##",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get User Email",
-         "data": [
-           {
-             "scenario": "Retrieve All User Emails with authorization",
- 
-             "method": "GET",
-             "endpoint": "fetch-emails",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve All User Emails with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "fetch-ememails",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve All User Emails with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "fetch-emails**##",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get All Roles",
-         "data": [
-           {
-             "scenario": "Retrieve All Roles with authorization",
- 
-             "method": "GET",
-             "endpoint": "roles",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve All Roles with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "rolesssss",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve All Roles with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "roles**##",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get All Users With Roles",
-         "data": [
-           {
-             "scenario": "Retrieve All Users With Roles with authorization",
- 
-             "method": "GET",
-             "endpoint": "users/roles",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve All Users With Roles with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/roleeles",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve All Users With Roles with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/roles**##",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get Count of Active And Inactive Users",
-         "data": [
-           {
-             "scenario": "Retrieve Count of Active And Inactive Users with authorization",
- 
-             "method": "GET",
-             "endpoint": "users/byStatus",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve Count of Active And Inactive Users with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/BYStatus",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Count of Active And Inactive Users with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/byStatus**##",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get User By Program Batches",
-         "data": [
-           {
-             "scenario": "Retrieve Users By Program Batches with authorization",
- 
-             "method": "GET",
-             "endpoint": "users/programBatch/9586",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve Users By Program Batches with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/PROrogramBatch/9586",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users By Program Batches with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/programBatch/9586",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users By Program Batches with invalid pgm id",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/programBatch/95*6",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Retrieve User For Program",
-         "data": [
-           {
-             "scenario": "Retrieve Users For Program with authorization",
- 
-             "method": "GET",
-             "endpoint": "users/programs/16208",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve Users For Program with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/proGRams/16208",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users For Program with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/prog&&ams/16208",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users For Program with invalid pgm id",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/programBatch/1620$$8",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Get Users By RoleId",
-         "data": [
-           {
-             "scenario": "Retrieve Users By RoleId with authorization",
- 
-             "method": "GET",
-             "endpoint": "users/roles/R03",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve Users By RoleId with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/rolesSS/R03",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users By RoleId with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/role$$s/R03",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users By RoleId with invalid role id",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "users/roles/R05",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       },
-       {
-         "name": "Gets Users By RoleId V2",
-         "data": [
-           {
-             "scenario": "Retrieve Users By RoleId V2 with authorization",
- 
-             "method": "GET",
-             "endpoint": "v2/users",
-             "statusCode": 200,
-             "statusText": "OK"
-           },
- 
-           {
-             "scenario": "Retrieve Users By RoleId V2 with invalid Endpoint",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "V2/Usersss",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           },
-           {
-             "scenario": "Retrieve Users By RoleId V2 with special characters",
-             "authType": "Bearer Token",
-             "method": "GET",
-             "endpoint": "v2/user##$s",
-             "statusCode": 404,
-             "statusText": "Not Found"
-           }
-         ]
-       }
+
       ]
    }
 ]
