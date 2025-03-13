@@ -200,7 +200,7 @@
                   "method":"POST",
                   "contentType":"application/json",                  
                   "programDescription": "program with All fields",
-                  "programName": "PostmanApiExplorer",
+                  "programName": "PostmanApiExpArray",
                   "programStatus": "Active",
                   "authType": "Bearer Token",
                   "Endpoint": "saveprogram",
@@ -248,7 +248,7 @@
                   "method":"POST",
                   "contentType":"application/json",                  
                   "programDescription": "program with All fields",
-                  "programName": "PostmanApiExplorerAbc",
+                  "programName": "PostmanApiExplorerXyz",
                   "programStatus": "Active",
                   "authType": "Bearer Token",
                   "Endpoint": "saveprogram",
@@ -959,12 +959,12 @@
                 "userComments": "Admin user for LMS",
                 "userEduPg": "MBA",
                 "userEduUg": "B.Tech",
-                "userFirstName": "Alia",
+                "userFirstName": "Astra",
                 "userLastName": "Johnson",
                 "userLinkedinUrl": "https://www.linkedin.com",
                 "userLocation": "New York",
                 "userMiddleName": "A",
-                "userPhoneNumber": "+1 2134567890",
+                "userPhoneNumber": "+1 2134567864",
                 "userRoleMaps": [
                     {
                         "roleId": "R01",
@@ -975,7 +975,7 @@
                 "userVisaStatus": "US-Citizen",
                 "userLogin": {
                     "loginStatus": "Active",
-                    "userLoginEmail": "alia1.admin@gmail.com"
+                    "userLoginEmail": "alia1uerd@gmail.com"
                 },
                 "statusCode": 200,
                 "statusText": "OK"
@@ -1052,7 +1052,6 @@
             }
         ]
     },
-
 
 
 
@@ -1400,7 +1399,7 @@
                 "batch_Id": "{{batchId2}}",
                 "class_Num": 1,
                 "class_date": "2025-03-18T19:04:41.220Z",
-               "class_topic": "pythoniterator",
+               "class_topic": "pythoniteratorArray",
                 "class_status": "Active",
                 "class_staffId": "U25",
                 "class_description": "WebAutomation",
@@ -1457,12 +1456,35 @@
                   "Endpoint": "allClasses",
                   "statusCode": 200,
                   "statusText": "OK"
-               }              
+               },
+               {
+                  "method":"GET",
+                  "authType": "Bearer Token",
+                  "Endpoint": "allClasseSSSSSSSs",
+                  "statusCode": 404,
+                  "statusText": "Not Found"
+               },
 
 
-           
+                {
+                  "method":"POST",
+                  "authType": "Bearer Token",
+                  "Endpoint": "allClasses",
+                  "statusCode": 405,
+                  "statusText": "Method Not Allowed"
+               },
+
+
+             {
+                  "method":"GET",
+                  "authType": "No Auth",
+                  "Endpoint": "allClasses",
+                  "statusCode": 401,
+                  "statusText": "Unauthorized"
+               }
             ]
       },
+
 {
           "name": "Get all Upcoming Classes for particular Student",
             "data": [
@@ -1535,6 +1557,13 @@
                   "Endpoint": "batchRecordings/zzz",
                   "statusCode": 404,
                   "statusText": "Not Found"
+               },
+		{
+                  "method":"PUT",
+                  "authType": "Bearer Token",
+                  "Endpoint": "batchRecordings/{{batchId2}}",
+                  "statusCode": 405,
+                  "statusText": "Method Not Allowed"
                }
               
           ]
@@ -2198,7 +2227,343 @@
                }
           ]
       }
+,
+       {
+         "name": "Get All Users",
+         "data": [
+           {
+             "scenario": "Retrieve all Users with authorization",
+ 
+             "endpoint": "users",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+           {
+             "scenario": "Retrieve all batches with authorization and invalid endpoint",
+ 
+             "endpoint": "usersss",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
 
+       {
+         "name": "Get Active Users",
+         "data": [
+           {
+             "scenario": "Retrieve All Active Users with authorization",
+ 
+             "method": "GET",
+             "endpoint": "users/activeUsers",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve All Active Users with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/activeUserssss",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve All Active Users with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/activeUsers**##",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Get User Email",
+         "data": [
+           {
+             "scenario": "Retrieve All User Emails with authorization",
+ 
+             "method": "GET",
+             "endpoint": "fetch-emails",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve All User Emails with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "fetch-ememails",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve All User Emails with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "fetch-emails**##",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Get All Roles",
+         "data": [
+           {
+             "scenario": "Retrieve All Roles with authorization",
+ 
+             "method": "GET",
+             "endpoint": "roles",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve All Roles with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "rolesssss",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve All Roles with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "roles**##",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Get All Users With Roles",
+         "data": [
+           {
+             "scenario": "Retrieve All Users With Roles with authorization",
+ 
+             "method": "GET",
+             "endpoint": "users/roles",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve All Users With Roles with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/roleeles",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve All Users With Roles with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/roles**##",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Get Count of Active And Inactive Users",
+         "data": [
+           {
+             "scenario": "Retrieve Count of Active And Inactive Users with authorization",
+ 
+             "method": "GET",
+             "endpoint": "users/byStatus",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve Count of Active And Inactive Users with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/BYStatus",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Count of Active And Inactive Users with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/byStatus**##",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Get User By Program Batches",
+         "data": [
+           {
+             "scenario": "Retrieve Users By Program Batches with authorization",
+ 
+             "method": "GET",
+             "endpoint": "users/programBatch/9586",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve Users By Program Batches with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/PROrogramBatch/9586",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users By Program Batches with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/programBatch/9586",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users By Program Batches with invalid pgm id",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/programBatch/95*6",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Retrieve User For Program",
+         "data": [
+           {
+             "scenario": "Retrieve Users For Program with authorization",
+ 
+             "method": "GET",
+             "endpoint": "users/programs/16208",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve Users For Program with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/proGRams/16208",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users For Program with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/prog&&ams/16208",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users For Program with invalid pgm id",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/programBatch/1620$$8",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Get Users By RoleId",
+         "data": [
+           {
+             "scenario": "Retrieve Users By RoleId with authorization",
+ 
+             "method": "GET",
+             "endpoint": "users/roles/R03",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve Users By RoleId with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/rolesSS/R03",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users By RoleId with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/role$$s/R03",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users By RoleId with invalid role id",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "users/roles/R05",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+       {
+         "name": "Gets Users By RoleId V2",
+         "data": [
+           {
+             "scenario": "Retrieve Users By RoleId V2 with authorization",
+ 
+             "method": "GET",
+             "endpoint": "v2/users",
+             "statusCode": 200,
+             "statusText": "OK"
+           },
+ 
+           {
+             "scenario": "Retrieve Users By RoleId V2 with invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "V2/Usersss",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Retrieve Users By RoleId V2 with special characters",
+             "authType": "Bearer Token",
+             "method": "GET",
+             "endpoint": "v2/user##$s",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       },
+{
+         "name": "Delete User By UserId",
+         "data": [
+           
+           {
+             "scenario": "Delete User by invalid batchid",
+             "authType": "Bearer Token",
+             "method": "DELETE",
+             "endpoint": "users/",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           },
+           {
+             "scenario": "Delete User by invalid Endpoint",
+             "authType": "Bearer Token",
+             "method": "DELETE",
+             "endpoint": "users/{{nuserId}}",
+             "statusCode": 404,
+             "statusText": "Not Found"
+           }
+         ]
+       }
 
       ]
    }
